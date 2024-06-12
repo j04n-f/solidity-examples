@@ -16,6 +16,10 @@ The Checks-Effects-Interactions pattern ensures that all code paths through a co
 
 A mutex variable protects critical parts of smart contract code from repeated execution through external calls. The mutex variable is a variable used in a condition that must validate as true to execute subsequent smart contract code. Otherwise, the code protected by the mutex variable is not executed. After the execution of the protected smart contract code, the mutex is unlocked to allow for the next execution of the protected code
 
+### Factory
+
+The Factory Pattern automates the deployment of Smart Contracts in a reliable and transparent manner.
+
 ## Usage
 
 ### Build

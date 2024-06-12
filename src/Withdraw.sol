@@ -15,7 +15,7 @@ contract Withdraw {
 
     /// @notice Protect method from Reentrancy Attacks
     modifier noReentrancy() {
-        if(locked) revert IsLocked();
+        if (locked) revert IsLocked();
         locked = true;
         _;
         locked = false;
@@ -44,7 +44,7 @@ contract Withdraw {
     /// @notice Withdraw founds from User Balance
     /// @dev Lock Withdraw to avoid Reentrancy Attacks
     /// @param _amount The Amount to Withdraw
-    function lockWithdraw(uint256 _amount) external noReentrancy() validAmount(_amount) {
+    function lockWithdraw(uint256 _amount) external noReentrancy validAmount(_amount) {
         balance[msg.sender] -= _amount;
         payable(msg.sender).transfer(_amount);
     }

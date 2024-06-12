@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.24;
 
-import {Test, stdError, console} from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 import {Withdraw} from "../src/Withdraw.sol";
 
 contract WithdrawTest is Test {
