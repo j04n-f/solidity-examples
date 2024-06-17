@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.24;
 
-import {Test, console} from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 import {TokenFactory, MyToken} from "../src/Factory.sol";
 
 contract FactoryTest is Test {
@@ -13,7 +13,9 @@ contract FactoryTest is Test {
 
     function test_CreateToken() public {
         factory.createToken("Solana", "SOL", 1000);
+
         MyToken token = MyToken(factory.getTokens()[0]);
+
         assertEq(token.name(), "Solana");
         assertEq(token.symbol(), "SOL");
         assertEq(token.decimals(), 18);

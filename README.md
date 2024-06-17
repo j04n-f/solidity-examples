@@ -18,7 +18,11 @@ A mutex variable protects critical parts of smart contract code from repeated ex
 
 ### Factory
 
-The Factory Pattern automates the deployment of Smart Contracts in a reliable and transparent manner.
+The Factory Pattern automates the creation and management of new Contracts in a reliable and transparent manner. 
+
+### Proxy
+
+The Proxy Pattern allows upgrading a Contract Implementation logic, while making it accessible via a static address. The Proxy Contract stores the Implementation address into a pseudorandom slot address to avoid accidentally overwriting the value and expose the required functions to change the address. The Proxy forwards the calls to the Implementation Contract throught the `delegatecall(...)`. The Implementation Contract code is executed using the Proxy storage.
 
 ## Usage
 
