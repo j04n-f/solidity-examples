@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.24;
 
-import {Test, console} from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 import {ChecksEffectsInteractions} from "../src/ChecksEffectsInteractions.sol";
 
 contract Attacker {
@@ -29,7 +29,6 @@ contract Attacker {
     }
 }
 
-
 contract ChecksEffectsInteractionsTest is Test {
     ChecksEffectsInteractions public bank;
 
@@ -51,7 +50,9 @@ contract ChecksEffectsInteractionsTest is Test {
 
     function test_RevertWhen_InsufficientBalance() public {
         Attacker attacker = new Attacker(address(bank));
-        vm.expectRevert(abi.encodeWithSelector(ChecksEffectsInteractions.TransactionError.selector, "Insufficient Balance"));
+        vm.expectRevert(
+            abi.encodeWithSelector(ChecksEffectsInteractions.TransactionError.selector, "Insufficient Balance")
+        );
         attacker.attack{value: 10 ether}();
     }
 

@@ -5,7 +5,6 @@ import {Test} from "forge-std/Test.sol";
 import {Proxy} from "../src/Proxy.sol";
 
 contract Counter {
-
     uint256 public count;
 
     function increase() external {

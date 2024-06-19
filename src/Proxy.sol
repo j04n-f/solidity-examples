@@ -17,7 +17,6 @@ library StorageSlot {
 /// @author Joan Flotats
 /// @notice The Proxy Pattern allows upgrading the Implementation logic, while making it accessible via the static address
 contract Proxy {
-
     // Use a pseudorandom slot address to store the Implementaton address
     bytes32 private constant IMPLEMENTATION_SLOT = bytes32(uint256(keccak256("eip1967.proxy.implementation")) - 1);
 

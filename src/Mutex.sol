@@ -16,7 +16,7 @@ contract Mutex {
 
     /// @notice Protect method from Reentrancy Attacks
     modifier noReentrancy() {
-        if(locked) revert IsLocked("No re-entrancy");
+        if (locked) revert IsLocked("No re-entrancy");
         locked = true;
         _;
         locked = false;
@@ -28,7 +28,7 @@ contract Mutex {
     }
 
     function _getRevertMessage(bytes memory _returnData) internal pure returns (string memory) {
-        if (_returnData.length < 68) return 'Transaction reverted silently';
+        if (_returnData.length < 68) return "Transaction reverted silently";
         assembly {
             _returnData := add(_returnData, 0x04)
         }
@@ -42,7 +42,7 @@ contract Mutex {
         if (_amount == 0) revert InvalidAmount();
         if (_amount > balance[msg.sender]) revert InsufficientBalance(_amount, balance[msg.sender]);
         (bool success, bytes memory response) = msg.sender.call{value: _amount}("");
-        if(!success) revert TransactionError(_getRevertMessage(response));
+        if (!success) revert TransactionError(_getRevertMessage(response));
 
         // Required for Solidity >8.0.0 to disable underflows checks
         unchecked {

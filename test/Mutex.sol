@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.24;
 
-import {Test, console} from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 import {Mutex} from "../src/Mutex.sol";
 
 contract Attacker {
@@ -28,7 +28,6 @@ contract Attacker {
         bank.withdraw(1 ether);
     }
 }
-
 
 contract MutexTest is Test {
     Mutex public bank;

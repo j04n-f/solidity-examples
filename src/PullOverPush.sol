@@ -5,7 +5,6 @@ pragma solidity ^0.8.24;
 /// @author Joan Flotats
 /// @notice Pull Over Push Pattern shifts the risk associated with transferring ether to the User
 contract PullOverPush {
-
     mapping(address => uint256) public balance;
 
     error InsufficientBalance(uint256 _amount, uint256 _balance);

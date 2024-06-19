@@ -5,7 +5,6 @@ pragma solidity ^0.8.24;
 /// @author Joan Flotats
 /// @notice The Checks Effects Interactions Pattern ensures that all code paths through a contract complete all required checks of the supplied parameters before modifying the contract’s state (Checks); only then it makes any changes to the state (Effects);
 contract ChecksEffectsInteractions {
-
     mapping(address => uint256) public balance;
 
     error TransactionError(string err);
@@ -18,7 +17,7 @@ contract ChecksEffectsInteractions {
     }
 
     function _getRevertMessage(bytes memory _returnData) internal pure returns (string memory) {
-        if (_returnData.length < 68) return 'Transaction reverted silently';
+        if (_returnData.length < 68) return "Transaction reverted silently";
         assembly {
             _returnData := add(_returnData, 0x04)
         }
@@ -30,10 +29,11 @@ contract ChecksEffectsInteractions {
     /// @param _amount The Amount to Withdraw
     function withdraw(uint256 _amount) external {
         if (_amount == 0) revert InvalidAmount();
-        if (_amount > balance[msg.sender]) revert InsufficientBalance("Insufficient Balance", _amount, balance[msg.sender]);
+        if (_amount > balance[msg.sender]) {
+            revert InsufficientBalance("Insufficient Balance", _amount, balance[msg.sender]);
+        }
         balance[msg.sender] -= _amount;
         (bool success, bytes memory response) = msg.sender.call{value: _amount}("");
-        if(!success) revert TransactionError(_getRevertMessage(response));
+        if (!success) revert TransactionError(_getRevertMessage(response));
     }
 }
-
