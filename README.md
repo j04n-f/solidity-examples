@@ -2,6 +2,10 @@
 
 ## Contracts
 
+### Commitment
+
+The Commitment Pattern ensures that the values, which have been committed, are not visible to other entities and are kept secret until the individual accounts reveal their values while assuring that these values are binding for the corresponding entities. Transactions take some time before they are mined. An attacker can watch the transaction pool and send a transaction, have it included in a block before the original transaction. This mechanism can be abused to re-order transactions to the attacker's advantage. The Commitment Pattern does not allows the Attacker to take advantage of the transactions re-ordering because the Attacker does not have the values to reveal the commitment.
+
 ### State Machine
 
 The State Machine Pattern enables the Contracts to act as a state machine, which means that they have certain stages in which they behave differently or in which different functions can be called. A function call often ends a stage and transitions the contract into the next stage.

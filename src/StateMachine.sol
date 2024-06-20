@@ -15,13 +15,16 @@ contract StateMachine {
 
     Stages public stage = Stages.Created;
 
-    modifier atStage(Stages stage_) {
-        if (stage != stage_) {
+    /// @notice Check current Stage allows function execution
+    /// @param _stage Required function Stage
+    modifier atStage(Stages _stage) {
+        if (stage != _stage) {
             revert FunctionInvalidAtThisStage();
         }
         _;
     }
 
+    /// @notice Transicition to the next Stage after function execution
     modifier transitionNext() {
         _;
         nextStage();
