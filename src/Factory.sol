@@ -20,7 +20,7 @@ contract MyToken {
 /// @title Token Factory
 /// @author Joan Flotats
 /// @notice The Token Factory automates the deployment of Tokens in a relSmart Contractsiable and transparent manner
-contract TokenFactory {
+contract Factory {
     address[] public token;
 
     /// @notice Create and Deploy a new Token

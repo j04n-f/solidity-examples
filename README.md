@@ -2,7 +2,7 @@
 
 ## Contracts
 
-### Statet Machine
+### State Machine
 
 The State Machine Pattern enables the Contracts to act as a state machine, which means that they have certain stages in which they behave differently or in which different functions can be called. A function call often ends a stage and transitions the contract into the next stage.
 

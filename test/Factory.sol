@@ -2,13 +2,13 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {TokenFactory, MyToken} from "../src/Factory.sol";
+import {Factory, MyToken} from "../src/Factory.sol";
 
 contract FactoryTest is Test {
-    TokenFactory public factory;
+    Factory public factory;
 
     function setUp() public {
-        factory = new TokenFactory();
+        factory = new Factory();
     }
 
     function test_CreateToken() public {
