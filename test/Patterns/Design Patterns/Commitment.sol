@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {Commitment} from "../src/Commitment.sol";
+import {Commitment} from "../../../src/Patterns/Design Patterns/Commitment.sol";
 
 contract CommitmentTest is Test {
     Commitment public commitment;

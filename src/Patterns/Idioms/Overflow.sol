@@ -14,9 +14,6 @@ library SafeMath8 {
     }
 }
 
-/// @title Overflow Pattern
-/// @author Joan Flotats
-/// @notice The Overflow/Underflow Pattern avoids wrong calculations or infinite loops due to overflow and underflow
 contract Overflow {
     using SafeMath8 for uint8;
 

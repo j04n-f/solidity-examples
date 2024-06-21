@@ -13,9 +13,6 @@ library StorageSlot {
     }
 }
 
-/// @title Proxy Pattern
-/// @author Joan Flotats
-/// @notice The Proxy Pattern allows upgrading the Implementation logic, while making it accessible via the static address
 contract Proxy {
     // Use a pseudorandom slot address to store the Implementaton address
     bytes32 private constant IMPLEMENTATION_SLOT = bytes32(uint256(keccak256("eip1967.proxy.implementation")) - 1);
@@ -35,14 +32,10 @@ contract Proxy {
         StorageSlot.getAddressSlot(IMPLEMENTATION_SLOT).value = _implementation;
     }
 
-    /// @notice Upgrade Implementation address
-    /// @param _implementation The address of the Contract
     function upgradeTo(address _implementation) external {
         _setImplementation(_implementation);
     }
 
-    /// @notice Retrive the Implementation
-    /// @return _implemementation The Implementation address
     function implementation() external view returns (address _implemementation) {
         return _getImplementation();
     }

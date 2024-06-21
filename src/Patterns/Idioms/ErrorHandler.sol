@@ -27,9 +27,6 @@ contract Contract {
     }
 }
 
-/// @title Error Handling Pattern
-/// @author Joan Flotats
-/// @notice The Error Handling Pattern appropriately handles errors occurring in smart contracts to prevent denial of service or the locking of balances
 contract ErrorHandler {
     Contract errorContract;
 
@@ -37,9 +34,6 @@ contract ErrorHandler {
         errorContract = new Contract();
     }
 
-    /// @notice Retrive the error message from error
-    /// @param _returnData Returned data by Error
-    /// @return The Error message
     function _getRevertMessage(bytes memory _returnData) internal pure returns (string memory) {
         if (_returnData.length < 68) return "Transaction reverted silently";
         assembly {
@@ -48,9 +42,6 @@ contract ErrorHandler {
         return abi.decode(_returnData, (string));
     }
 
-    /// @notice Perform an external call that can throw an error
-    /// @param _err Error to throw
-    /// @return err Error reason as string
     function catchError(Contract.Error _err) public view returns (string memory err) {
         try errorContract.throwError(_err) returns (string memory value) {
             return value;

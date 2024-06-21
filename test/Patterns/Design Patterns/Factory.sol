@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {Factory, MyToken} from "../src/Factory.sol";
+import {Factory, MyToken} from "../../../src/Patterns/Design Patterns/Factory.sol";
 
 contract FactoryTest is Test {
     Factory public factory;

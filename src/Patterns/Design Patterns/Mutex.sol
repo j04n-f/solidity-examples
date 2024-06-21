@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.24;
 
-/// @title Mutex Pattern
-/// @author Joan Flotats
-/// @notice The Mutex Pattern protects critical parts of code from repeated execution through external calls
 contract Mutex {
     bool locked;
 
@@ -14,7 +11,6 @@ contract Mutex {
     error InsufficientBalance(uint256 _amount, uint256 _balance);
     error InvalidAmount();
 
-    /// @notice Protect method from Reentrancy Attacks
     modifier noReentrancy() {
         if (locked) revert IsLocked("No re-entrancy");
         locked = true;
@@ -22,14 +18,10 @@ contract Mutex {
         locked = false;
     }
 
-    /// @notice Deposit founds to User Balance
     function deposit() external payable {
         balance[msg.sender] += msg.value;
     }
 
-    /// @notice Retrive the error message from error
-    /// @param _returnData Returned data by Error
-    /// @return The Error message
     function _getRevertMessage(bytes memory _returnData) internal pure returns (string memory) {
         if (_returnData.length < 68) return "Transaction reverted silently";
         assembly {
@@ -38,9 +30,6 @@ contract Mutex {
         return abi.decode(_returnData, (string));
     }
 
-    /// @notice Withdraw founds from User Balance
-    /// @dev Lock Withdraw to avoid Reentrancy Attacks
-    /// @param _amount The Amount to Withdraw
     function withdraw(uint256 _amount) external noReentrancy {
         if (_amount == 0) revert InvalidAmount();
         if (_amount > balance[msg.sender]) revert InsufficientBalance(_amount, balance[msg.sender]);

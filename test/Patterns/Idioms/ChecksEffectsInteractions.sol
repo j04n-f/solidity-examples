@@ -2,13 +2,13 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {PullOverPush} from "../src/PullOverPush.sol";
+import {ChecksEffectsInteractions} from "../../../src/Patterns/Idioms/ChecksEffectsInteractions.sol";
 
 contract Attacker {
-    PullOverPush public bank;
+    ChecksEffectsInteractions public bank;
 
     constructor(address _bank) {
-        bank = PullOverPush(_bank);
+        bank = ChecksEffectsInteractions(_bank);
     }
 
     fallback() external payable {
@@ -29,11 +29,11 @@ contract Attacker {
     }
 }
 
-contract PullOverPushTest is Test {
-    PullOverPush public bank;
+contract ChecksEffectsInteractionsTest is Test {
+    ChecksEffectsInteractions public bank;
 
     function setUp() public {
-        bank = new PullOverPush();
+        bank = new ChecksEffectsInteractions();
         bank.deposit{value: 10 ether}();
     }
 
@@ -55,12 +55,15 @@ contract PullOverPushTest is Test {
     }
 
     function test_RevertWhen_InsufficientBalance() public {
-        vm.expectRevert(abi.encodeWithSelector(PullOverPush.InsufficientBalance.selector, 12 ether, 10 ether));
-        bank.withdraw(12 ether);
+        Attacker attacker = new Attacker(address(bank));
+        vm.expectRevert(
+            abi.encodeWithSelector(ChecksEffectsInteractions.TransactionError.selector, "Insufficient Balance")
+        );
+        attacker.attack{value: 10 ether}();
     }
 
     function test_RevertWhen_InvalidAmount() public {
-        vm.expectRevert(PullOverPush.InvalidAmount.selector);
+        vm.expectRevert(ChecksEffectsInteractions.InvalidAmount.selector);
         bank.withdraw(0 ether);
     }
 

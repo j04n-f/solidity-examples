@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {ReplayProtection} from "../src/ReplayProtection.sol";
+import {ReplayProtection} from "../../../src/Patterns/Design Patterns/ReplayProtection.sol";
 import {MessageHashUtils} from "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
 
 contract ReplayProtectionTest is Test {

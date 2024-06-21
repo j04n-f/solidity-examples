@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {Mutex} from "../src/Mutex.sol";
+import {Mutex} from "../../../src/Patterns/Design Patterns/Mutex.sol";
 
 contract Attacker {
     Mutex public bank;

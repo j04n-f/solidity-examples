@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {Proxy} from "../src/Proxy.sol";
+import {Proxy} from "../../../src/Patterns/Architectural Patterns/Proxy.sol";
 
 contract Counter {
     uint256 public count;

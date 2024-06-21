@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {Overflow} from "../src/Overflow.sol";
+import {Overflow} from "../../../src/Patterns/Idioms/Overflow.sol";
 
 contract OverflowTest is Test {
     Overflow public overflow;
