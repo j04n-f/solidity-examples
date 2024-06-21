@@ -27,6 +27,9 @@ contract Mutex {
         balance[msg.sender] += msg.value;
     }
 
+    /// @notice Retrive the error message from error
+    /// @param _returnData Returned data by Error
+    /// @return The Error message
     function _getRevertMessage(bytes memory _returnData) internal pure returns (string memory) {
         if (_returnData.length < 68) return "Transaction reverted silently";
         assembly {

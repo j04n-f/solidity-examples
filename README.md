@@ -2,6 +2,10 @@
 
 ## Contracts
 
+### Error Handling
+
+The Error Handling Pattern appropriately handles errors occurring in smart contracts to prevent denial of service or the locking of balances.
+
 ### Replay Protection
 
 The Replay Protection Pattern protects smart contracts from replay attacks. In replay attacks, attackers use data included in transactions (e.g., digital signatures for authentication) issued by other identities and resend the transaction, for example, to manipulate token balances kept by a smart contract. The Pattern forces the User to signe the transaction including a nonce and the Contract address to prevent multiple executions of the same transaction.
