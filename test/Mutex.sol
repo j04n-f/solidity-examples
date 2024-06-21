@@ -43,9 +43,15 @@ contract MutexTest is Test {
     }
 
     function test_Withdraw() public {
+        address user = vm.addr(1);
+        vm.startPrank(user);
+        vm.deal(user, 10 ether);
+        bank.deposit{value: 10 ether}();
         bank.withdraw(2 ether);
-        assertEq(bank.balance(address(this)), 8 ether);
-        assertEq(address(bank).balance, 8 ether);
+        vm.stopPrank();
+        assertEq(bank.balance(user), 8 ether);
+        assertEq(address(bank).balance, 18 ether);
+        assertEq(address(user).balance, 2 ether);
     }
 
     function test_RevertWhen_WithdrawIsLocke() public {
