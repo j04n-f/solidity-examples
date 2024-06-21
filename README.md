@@ -2,6 +2,10 @@
 
 ## Contracts
 
+### Replay Protection
+
+The Replay Protection Pattern protects smart contracts from replay attacks. In replay attacks, attackers use data included in transactions (e.g., digital signatures for authentication) issued by other identities and resend the transaction, for example, to manipulate token balances kept by a smart contract. The Pattern forces the User to signe the transaction including a nonce and the Contract address to prevent multiple executions of the same transaction.
+
 ### Commitment
 
 The Commitment Pattern ensures that the values, which have been committed, are not visible to other entities and are kept secret until the individual accounts reveal their values while assuring that these values are binding for the corresponding entities. Transactions take some time before they are mined. An attacker can watch the transaction pool and send a transaction, have it included in a block before the original transaction. This mechanism can be abused to re-order transactions to the attacker's advantage. The Commitment Pattern does not allows the Attacker to take advantage of the transactions re-ordering because the Attacker does not have the values to reveal the commitment.
