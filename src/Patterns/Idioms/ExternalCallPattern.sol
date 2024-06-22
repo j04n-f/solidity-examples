@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 interface IExternalContract {
-    function externalFunction() view external returns (bool);
+    function externalFunction() external view returns (bool);
 }
 
 contract ExternalCall {
