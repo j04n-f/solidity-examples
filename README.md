@@ -2,6 +2,12 @@
 
 ## Contracts
 
+### Applications
+
+**Multi-Sig Wallet**
+
+The purpose of a Multi-Sig Wallet is to enhance security and reduce the risk of unauthorized access to funds. By requiring multiple parties to agree on a transaction, it becomes more challenging for a single individual to compromise the wallet and steal the funds.
+
 ### Patterns
 
 #### Architectural Patterns

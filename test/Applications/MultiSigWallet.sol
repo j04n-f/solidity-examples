@@ -120,7 +120,7 @@ contract MultiSigWalletTest is Test {
         wallet.executeTransaction(10);
     }
 
-    function test_RevertWhen_ConfirmNotOwner() public {
+    function test_RevertWhen_NotOwnerConfirmation() public {
         address to = vm.addr(1);
 
         uint256 index = wallet.submitTransaction(to, 2 ether, "");
@@ -130,13 +130,12 @@ contract MultiSigWalletTest is Test {
         wallet.confirmTransaction(index);
     }
 
-    function test_RevertWhen_ConfirmNotFoundTransaction() public {
+    function test_RevertWhen_NotFoundTransactionToConfirm() public {
         vm.expectRevert(MultiSigWallet.TransactionNotFoundError.selector);
         wallet.confirmTransaction(10);
     }
 
-
-    function test_RevertWhen_ConfirmAlreadyExecutedTransaction() public {
+    function test_RevertWhen_ConfirmationOfAlreadyExecutedTransaction() public {
         address to = vm.addr(1);
 
         uint256 index = wallet.submitTransaction(to, 2 ether, "");
@@ -161,5 +160,57 @@ contract MultiSigWalletTest is Test {
         wallet.confirmTransaction(index);
         vm.expectRevert(MultiSigWallet.TransactionAlreadyConfirmedError.selector);
         wallet.confirmTransaction(index);
+    }
+
+    function test_RevertWhen_NotOwnerRevokeConfirmation() public {
+        address to = vm.addr(1);
+
+        uint256 index = wallet.submitTransaction(to, 2 ether, "");
+
+        vm.prank(vm.addr(0xa11ce1));
+        vm.expectRevert(MultiSigWallet.NotAuthorizedError.selector);
+        wallet.revokeConfirmation(index);
+    }
+
+    function test_RevertWhen_NotFoundTransactionToRevokeConfirmation() public {
+        vm.expectRevert(MultiSigWallet.TransactionNotFoundError.selector);
+        wallet.revokeConfirmation(10);
+    }
+
+    function test_RveretWhen_RevokeConfirmacionOfAlreadyExecutedTransaction() public {
+        address to = vm.addr(1);
+
+        uint256 index = wallet.submitTransaction(to, 2 ether, "");
+
+        wallet.confirmTransaction(index);
+        vm.prank(vm.addr(0xa11ce));
+        wallet.confirmTransaction(index);
+        vm.prank(vm.addr(0xb0b));
+        wallet.confirmTransaction(index);
+
+        wallet.executeTransaction(index);
+
+        vm.expectRevert(MultiSigWallet.TransactionAlreadyExecutedError.selector);
+        wallet.revokeConfirmation(index);
+    }
+
+    function test_RevokeConfirmation() public {
+        address to = vm.addr(1);
+
+        uint256 index = wallet.submitTransaction(to, 2 ether, "");
+
+        wallet.confirmTransaction(index);
+
+        (,,,, uint256 numConfirmations) = wallet.transactions(index);
+
+        assertEq(numConfirmations, 1);
+
+        vm.expectEmit();
+        emit MultiSigWallet.RevokeConfirmation(address(this), index);
+        wallet.revokeConfirmation(index);
+
+        (,,,, numConfirmations) = wallet.transactions(index);
+
+        assertEq(numConfirmations, 0);
     }
 }
