@@ -46,6 +46,10 @@ The Checks-Effects-Interactions Pattern ensures that all code paths through a co
 
 The Error Handling Pattern appropriately handles errors occurring in Contracts to prevent denial of service or the locking of balances.
 
+*External Call*
+
+The External-Call Pattern handles calls to external Contracts to appropriately handle failed calls and prevent unintended side effects.
+
 *Guarding Pattern*
 
 The Guarding Pattern ensures that a function is only executable by specific accounts.
