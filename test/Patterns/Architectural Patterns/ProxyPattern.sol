@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {Proxy} from "../../../src/Patterns/Architectural Patterns/Proxy.sol";
+import {Proxy} from "../../../src/Patterns/Architectural Patterns/ProxyPattern.sol";
 
 contract Counter {
     uint256 public count;
@@ -12,11 +12,11 @@ contract Counter {
     }
 }
 
-interface MockCounter {
+interface ICounter {
     function decrease() external;
 }
 
-contract FactoryTest is Test {
+contract ProxyPatternTest is Test {
     Proxy public proxy;
 
     function setUp() public {
@@ -42,7 +42,7 @@ contract FactoryTest is Test {
 
     function test_RevertWhen_DelegateCallFailure() public {
         vm.expectRevert();
-        MockCounter counter = MockCounter(address(proxy));
+        ICounter counter = ICounter(address(proxy));
         counter.decrease();
     }
 }

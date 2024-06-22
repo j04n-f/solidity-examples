@@ -13,7 +13,7 @@ contract Commitment {
 
     mapping(address => Commit) public commits;
 
-    function commit(bytes32 _commitHash) public {
+    function commit(bytes32 _commitHash) external {
         if (commits[msg.sender].commitHash != "") revert AlreadyCommitedError();
 
         Commit memory uC = commits[msg.sender];
@@ -22,7 +22,7 @@ contract Commitment {
         commits[msg.sender] = uC;
     }
 
-    function reveal(string memory _secret, string memory _value) public {
+    function reveal(string memory _secret, string memory _value) external {
         if (commits[msg.sender].commitHash == "") revert NoCommitmentError();
         if (commits[msg.sender].commitHash != keccak256(abi.encodePacked(msg.sender, _secret, _value))) {
             revert RevealError();

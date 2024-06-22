@@ -2,6 +2,7 @@
 pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/utils/Strings.sol";
+import {Utils} from "../Utils.sol";
 
 contract Contract {
     enum Error {
@@ -34,14 +35,6 @@ contract ErrorHandler {
         errorContract = new Contract();
     }
 
-    function _getRevertMessage(bytes memory _returnData) internal pure returns (string memory) {
-        if (_returnData.length < 68) return "Transaction reverted silently";
-        assembly {
-            _returnData := add(_returnData, 0x04)
-        }
-        return abi.decode(_returnData, (string));
-    }
-
     function catchError(Contract.Error _err) public view returns (string memory err) {
         try errorContract.throwError(_err) returns (string memory value) {
             return value;
@@ -52,9 +45,7 @@ contract ErrorHandler {
         } catch (bytes memory reason) {
             bytes4 errorSelector = abi.decode(reason, (bytes4));
 
-            if (errorSelector == Contract.CustomError.selector) {
-                return _getRevertMessage(reason);
-            }
+            if (errorSelector == Contract.CustomError.selector) return Utils.getRevertMessage(reason);
         }
     }
 }

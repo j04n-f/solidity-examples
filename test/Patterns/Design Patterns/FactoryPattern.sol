@@ -2,9 +2,9 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {Factory, MyToken} from "../../../src/Patterns/Design Patterns/Factory.sol";
+import {Factory, TokenTemplate} from "../../../src/Patterns/Design Patterns/FactoryPattern.sol";
 
-contract FactoryTest is Test {
+contract FactoryPatternTest is Test {
     Factory public factory;
 
     function setUp() public {
@@ -14,7 +14,7 @@ contract FactoryTest is Test {
     function test_CreateToken() public {
         factory.createToken("Solana", "SOL", 1000);
 
-        MyToken token = MyToken(factory.getTokens()[0]);
+        TokenTemplate token = TokenTemplate(factory.getTokens()[0]);
 
         assertEq(token.name(), "Solana");
         assertEq(token.symbol(), "SOL");

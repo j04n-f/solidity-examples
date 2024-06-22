@@ -2,9 +2,9 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {ErrorHandler, Contract} from "../../../src/Patterns/Idioms/ErrorHandler.sol";
+import {ErrorHandler, Contract} from "../../../src/Patterns/Idioms/ErrorHandlingPattern.sol";
 
-contract ErrorHandlerTest is Test {
+contract ErrorHandlingPatternTest is Test {
     ErrorHandler public handler;
 
     function setUp() public {

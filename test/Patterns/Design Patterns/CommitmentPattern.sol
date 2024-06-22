@@ -2,9 +2,9 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {Commitment} from "../../../src/Patterns/Design Patterns/Commitment.sol";
+import {Commitment} from "../../../src/Patterns/Design Patterns/CommitmentPattern.sol";
 
-contract CommitmentTest is Test {
+contract CommitmentPatternTest is Test {
     Commitment public commitment;
 
     bytes32 commitHash = keccak256(abi.encodePacked(address(this), "Password0", "Ethereum0"));

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.24;
 
-contract MyToken {
+contract TokenTemplate {
     string public name;
     string public symbol;
     uint8 public decimals;
@@ -16,14 +16,14 @@ contract MyToken {
 }
 
 contract Factory {
-    address[] public token;
+    address[] public tokens;
 
     function createToken(string memory _name, string memory _symbol, uint256 _initialSupply) external {
-        address newToken = address(new MyToken(_name, _symbol, _initialSupply));
-        token.push(newToken);
+        address newToken = address(new TokenTemplate(_name, _symbol, _initialSupply));
+        tokens.push(newToken);
     }
 
-    function getTokens() public view returns (address[] memory) {
-        return token;
+    function getTokens() external view returns (address[] memory) {
+        return tokens;
     }
 }

@@ -31,6 +31,7 @@ contract ReplayProtection {
         txExecution[txHash] = true;
 
         (bool success,) = _to.call{value: _amount}("");
+
         if (!success) revert TransactionError();
     }
 

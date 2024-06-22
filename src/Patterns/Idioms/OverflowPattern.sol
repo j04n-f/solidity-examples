@@ -6,6 +6,7 @@ library SafeMath8 {
 
     function add(uint8 a, uint8 b) internal pure returns (uint8) {
         uint8 c;
+        // Required for Solidity >8.0.0 to disable overflow checks
         unchecked {
             c = a + b;
         }
