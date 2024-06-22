@@ -46,6 +46,10 @@ The Checks-Effects-Interactions Pattern ensures that all code paths through a co
 
 The Error Handling Pattern appropriately handles errors occurring in Contracts to prevent denial of service or the locking of balances.
 
+*Guarding Pattern*
+
+The Guarding Pattern ensures that a function is only executable by specific accounts.
+
 *Overflow*
 
 The Overflow/Underflow Pattern avoids overflow and underflow. Integer overflow and underflow can cause wrong calculations or infinite loops.
