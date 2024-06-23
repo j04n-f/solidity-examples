@@ -4,6 +4,10 @@
 
 ### Applications
 
+**MerkelTree**
+
+A Merkle Tree is a tree data structure of hashes, where each leaf node contains the hash of a block of data, and each parent node contains the hash resulting from the concatenation and hashing of its children node’s hashes. A Merkle Tree allows Contracts to cryptographically prove that an element is contained in a set without revealing the entire set. The Contract only needs log(n) number of hashes to check if a hash belongs to a certain Merkle roor.
+
 **Multi-Sig Wallet**
 
 The purpose of a Multi-Sig Wallet is to enhance security and reduce the risk of unauthorized access to funds. By requiring multiple parties to agree on a transaction, it becomes more challenging for a single individual to compromise the wallet and steal the funds.
