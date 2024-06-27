@@ -4,11 +4,15 @@
 
 ### Applications
 
-*MerkelAirdrop*
+*Gasless Transfer*
+
+Gasless ERC20 token transfer with Meta transaction. The ERC20Permit allows a User to grant permission to others to spend their tokens in a transaction. User Tokens are transfered to the receiver and the fee costs to the message sender.
+
+*Merkel Airdrop*
 
 Use a Merkle Tree to check whether a User is eligible to claim the Airdrop.
 
-*MerkelTree*
+*Merkel Tree*
 
 A Merkle Tree is a tree data structure of hashes, where each leaf node contains the hash of a block of data, and each parent node contains the hash resulting from the concatenation and hashing of its children node’s hashes. A Merkle Tree allows Contracts to cryptographically prove that an element is contained in a set without revealing the entire set. The Contract only needs log(n) number of hashes to check if a hash belongs to a certain Merkle roor.
 
