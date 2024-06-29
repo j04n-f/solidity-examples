@@ -8,6 +8,10 @@
 
 Gasless ERC20 token transfer with Meta transaction. The ERC20Permit allows a User to grant permission to others to spend their tokens in a transaction. User Tokens are transfered to the receiver and the fee costs to the message sender.
 
+*Iterable Mapping*
+
+Library to iterate over a mapping elements.
+
 *Merkel Airdrop*
 
 Use a Merkle Tree to check whether a User is eligible to claim the Airdrop.
