@@ -24,6 +24,10 @@ A Merkle Tree is a tree data structure of hashes, where each leaf node contains 
 
 The purpose of a Multi-Sig Wallet is to enhance security and reduce the risk of unauthorized access to funds. By requiring multiple parties to agree on a transaction, it becomes more challenging for a single individual to compromise the wallet and steal the funds.
 
+*Time Lock*
+
+TimeLock is a contract that publishes a transaction to be executed in the future. After a minimum waiting period, the transaction can be executed. This feature is crucial for various applications such as governance mechanisms in DAOs, vesting schedules in DeFi, and security measures.
+
 ### Patterns
 
 #### Architectural Patterns
