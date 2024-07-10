@@ -4,7 +4,7 @@ Learn about Smart Contracts Applications and Solidity Patterns. Written and Test
 
 ## References
 
-- [Solidity Patterns](https://solidity-by-example.org/)
+- [Solidity Patterns](https://github.com/KITcii/smart-contract-dev-support/tree/main)
 - [Solidity by Example](https://solidity-by-example.org/)
 
 ## Contracts
